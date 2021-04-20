@@ -69,8 +69,8 @@ print(f"{converter.convert('USD', 'EUR', 100)} + {symbol.get_symbol('USD')}")
 
 # WE'RE GONNA EDIT THIS ONE, THEN PUSH IT TO THE OTHER
 
-@client.command(brief="testing stuff...")
-async def testing_convert(ctx, first_currency: str, second_currency: str, value: float):
+@client.command(brief="testing stuff...", aliases=['c', 'C', 'conv', 'CONV', 'CONVERT', 'conversion', 'CONVERSION'])
+async def convert(ctx, first_currency: str, second_currency: str, value: float):
 
     first_currency = first_currency.upper()
     second_currency = second_currency.upper()
@@ -121,9 +121,22 @@ async def testing_convert(ctx, first_currency: str, second_currency: str, value:
 
 # ICI CODE TOUT DE BASE
 
+# color = 0xE0E0E0 or #E0E0E0
+
+@client.command(brief="Shows you a table of the currencies you can use.", aliases=['currencies', 'table'])
+async def list(ctx):
+    list_embed = discord.Embed(
+        title=f"Currency Table",
+        # description=f"",
+        color=0xE0E0E0
+    )
+    list_embed.set_image(
+        url="https://i.imgur.com/QDCPQfT.png")
+    await ctx.send(embed=list_embed)
+
 
 @client.command(brief="WORKING ONE")
-async def convert(ctx, first_currency: str, second_currency: str, value: float):
+async def testing_convert(ctx, first_currency: str, second_currency: str, value: float):
 
     first_currency = first_currency.upper()
     second_currency = second_currency.upper()
